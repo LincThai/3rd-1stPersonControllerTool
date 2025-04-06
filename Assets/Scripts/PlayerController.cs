@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 2;
     public float gravity = 9.8f;
 
+    // angle smoothing
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
+
     // Update is called once per frame
     void Update()
     {
@@ -25,9 +29,10 @@ public class PlayerController : MonoBehaviour
         // check their has been input
         if (direction.magnitude >= 0.1f)
         {
-            // find the target angle based on movement and apply
+            // find the target angle based on movement then smooth and apply
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, targetAngle, 0);
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0, angle, 0);
 
             // apply movement
             controller.Move(direction * walkSpeed * Time.deltaTime);
