@@ -10,11 +10,18 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 5;
     public float runSpeed = 10;
     public float jumpHeight = 2;
-    public float gravity = 9.8f;
+    public float gravity = -9.8f;
 
     // angle smoothing
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+
+    // jump/grounding variables
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+    bool isGrounded;
+    Vector3 velocity;
 
     // Update is called once per frame
     void Update()
@@ -38,6 +45,23 @@ public class PlayerController : MonoBehaviour
             controller.Move(direction * walkSpeed * Time.deltaTime);
         }
 
+        // check if the players is grounded by forming a sphere at groundCheck with the radius of groundDistance
+        // then see if this sphere has collided with an object with a layer mask equal to groundMask
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+        // ensures the player is firmly on the ground
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+
+        controller.Move(velocity * Time.deltaTime);
     }
 }
