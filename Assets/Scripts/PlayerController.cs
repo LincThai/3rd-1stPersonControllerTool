@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     // set variable
     // references
     public CharacterController controller;
+    public Transform cam;
 
     // basic player variables
     public float walkSpeed = 5;
@@ -63,12 +64,15 @@ public class PlayerController : MonoBehaviour
         if (direction.magnitude >= 0.1f)
         {
             // find the target angle based on movement then smooth and apply
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            // take into account the camera angles
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0, angle, 0);
 
+            // make new movement vector 3 based of the direction the camera is facing on y axis
+            Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
             // apply movement
-            controller.Move(direction * moveSpeed * Time.deltaTime);
+            controller.Move(moveDir.normalized * moveSpeed * Time.deltaTime);
         }
 
         // jump
