@@ -29,6 +29,7 @@ public class ThirdPersonPlayerEditor : Editor
     {
         serializedObject.Update();
 
+        // make editor gui for floats of the player character
         EditorGUILayout.FloatField("Crouch Speed", crouchSpeed.floatValue);
         EditorGUILayout.FloatField("Walk Speed", walkSpeed.floatValue);
         EditorGUILayout.FloatField("Run Speed", runSpeed.floatValue);
