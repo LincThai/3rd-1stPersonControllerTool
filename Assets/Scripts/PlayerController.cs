@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     // Crouch Variables
     bool isCrouching = false;
     public float crouchHeight = 1;
-    public float walkHeight = 2;
+    public float standHeight = 2;
     float currentHeight;
 
     private void Start()
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         moveSpeed = walkSpeed;
         // set current height of collider and regular height of walking/running
         currentHeight = controller.height;
-        walkHeight = currentHeight;
+        standHeight = currentHeight;
     }
 
     // Update is called once per frame
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = Mathf.Lerp(moveSpeed, walkSpeed, acceleration * Time.deltaTime);
             // change character controller collider height smoothly to walk height
-            currentHeight = Mathf.Lerp(currentHeight, walkHeight, acceleration * Time.deltaTime);
+            currentHeight = Mathf.Lerp(currentHeight, standHeight, acceleration * Time.deltaTime);
         }
         // apply height changes
         controller.height = currentHeight;
