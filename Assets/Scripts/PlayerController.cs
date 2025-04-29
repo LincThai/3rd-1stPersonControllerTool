@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
 
     // Crouch Variables
+    [Header("Crouch")]
     bool isCrouching = false;
     public float crouchHeight = 1;
     public float standHeight = 2;
