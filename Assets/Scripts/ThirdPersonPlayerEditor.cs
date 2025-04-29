@@ -5,7 +5,7 @@ using UnityEditor;
 public class ThirdPersonPlayerEditor : Editor
 {
     // set variables
-    SerializedProperty crouchSpeed, walkSpeed, runSpeed;
+    SerializedProperty crouchSpeed, walkSpeed, sprintSpeed;
     SerializedProperty jumpHeight, crouchHeight, standHeight;
     SerializedProperty acceleration, gravity;
 
@@ -15,7 +15,7 @@ public class ThirdPersonPlayerEditor : Editor
         // connecting properties
         crouchSpeed = serializedObject.FindProperty("crouchSpeed");
         walkSpeed = serializedObject.FindProperty("walkSpeed");
-        runSpeed = serializedObject.FindProperty("runSpeed");
+        sprintSpeed = serializedObject.FindProperty("sprintSpeed");
         jumpHeight = serializedObject.FindProperty("jumpHeight");
         crouchHeight = serializedObject.FindProperty("crouchHeight");
         standHeight = serializedObject.FindProperty("standHeight");
@@ -31,7 +31,7 @@ public class ThirdPersonPlayerEditor : Editor
         // make editor gui for floats of the player character
         EditorGUILayout.FloatField("Crouch Speed", crouchSpeed.floatValue);
         EditorGUILayout.FloatField("Walk Speed", walkSpeed.floatValue);
-        EditorGUILayout.FloatField("Run Speed", runSpeed.floatValue);
+        EditorGUILayout.FloatField("Sprint Speed", sprintSpeed.floatValue);
         EditorGUILayout.FloatField("Jump Height", jumpHeight.floatValue);
         EditorGUILayout.FloatField("Crouch Height", crouchHeight.floatValue);
         EditorGUILayout.FloatField("Stand Height", standHeight.floatValue);

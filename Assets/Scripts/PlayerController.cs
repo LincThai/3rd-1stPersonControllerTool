@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [Header("Basic Player Movement Info")]
     public float crouchSpeed = 2.5f;
     public float walkSpeed = 5;
-    public float runSpeed = 10;
+    public float sprintSpeed = 10;
     public float jumpHeight = 2;
     public float gravity = -9.8f;
     public float acceleration = 0.5f;
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         {
             // when holding the sprint key
             // lerp between the current speed of movement to the running speed by increasing gradually by the acceleration over time
-            moveSpeed = Mathf.Lerp(moveSpeed, runSpeed, acceleration * Time.deltaTime);
+            moveSpeed = Mathf.Lerp(moveSpeed, sprintSpeed, acceleration * Time.deltaTime);
         }
         else
         {
