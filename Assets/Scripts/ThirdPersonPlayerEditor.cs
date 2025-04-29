@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.TerrainTools;
 
 [CustomEditor(typeof(PlayerController))]
 public class ThirdPersonPlayerEditor : Editor
