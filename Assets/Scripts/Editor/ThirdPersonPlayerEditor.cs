@@ -61,6 +61,7 @@ public class ThirdPersonPlayerEditor : Editor
         EditorGUILayout.PropertyField(cameraRot);
         CinemachineRotationComposer camView = cameraRot.objectReferenceValue as CinemachineRotationComposer;
         camView.Composition.ScreenPosition = EditorGUILayout.Vector2Field("Screen Position", camView.Composition.ScreenPosition);
+        camera.objectReferenceValue = cam;
         serializedObject.ApplyModifiedProperties();
     }
 }
