@@ -195,7 +195,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   crouchSpeed: 2.5
   walkSpeed: 5
-  runSpeed: 10
+  sprintSpeed: 10
   jumpHeight: 2
   gravity: -9.8
   acceleration: 0.5
@@ -204,9 +204,10 @@ MonoBehaviour:
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 3
   crouchHeight: 1
-  walkHeight: 2
+  standHeight: 2
+  cameraRig: {fileID: 0}
 --- !u!1 &4009869432402232267
 GameObject:
   m_ObjectHideFlags: 0

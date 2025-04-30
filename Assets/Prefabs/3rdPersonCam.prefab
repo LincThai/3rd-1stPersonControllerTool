@@ -201,14 +201,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3308043521325186617}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12218331, y: 1.1660816e-15, z: 1.2198071e-16, w: 0.9925076}
+  m_LocalRotation: {x: 0.12218115, y: 0, z: 0, w: 0.9925079}
   m_LocalPosition: {x: 0, y: 3, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6051764021678571811}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 14.036, y: 0, z: 0}
 --- !u!114 &9160922401770742984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 1, y: 0, z: 0}
   TrackerSettings:
     BindingMode: 4
     PositionDamping: {x: 1, y: 1, z: 1}
@@ -278,11 +278,11 @@ MonoBehaviour:
       Radius: 3
       Height: 8
     Center:
-      Radius: 8
+      Radius: 7
       Height: 3
     Bottom:
       Radius: 2.5
-      Height: 0.1
+      Height: 3
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
@@ -466,7 +466,7 @@ MonoBehaviour:
   IgnoreTag: 
   TransparentLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   MinimumDistanceFromTarget: 0.3
   AvoidObstacles:
     Enabled: 1

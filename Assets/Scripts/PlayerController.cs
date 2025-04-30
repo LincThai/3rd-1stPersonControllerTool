@@ -1,5 +1,7 @@
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,6 +43,9 @@ public class PlayerController : MonoBehaviour
     public float standHeight = 2;
     float currentHeight;
 
+    // cinemachine camera
+    public CinemachineOrbitalFollow cameraRig;
+    public CinemachineRotationComposer camRotation;
     private void Start()
     {
         // set a speed of movement to the walking speed
