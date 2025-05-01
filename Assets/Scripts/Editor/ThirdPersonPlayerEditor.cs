@@ -7,6 +7,7 @@ using Unity.Cinemachine;
 public class ThirdPersonPlayerEditor : Editor
 {
     // set variables
+    SerializedProperty controller, playerCam;
     SerializedProperty crouchSpeed, walkSpeed, sprintSpeed;
     SerializedProperty jumpHeight, crouchHeight, standHeight;
     SerializedProperty acceleration, gravity;
@@ -16,6 +17,8 @@ public class ThirdPersonPlayerEditor : Editor
     private void OnEnable()
     {
         // connecting properties
+        controller = serializedObject.FindProperty("controller");
+        playerCam = serializedObject.FindProperty("cam");
         crouchSpeed = serializedObject.FindProperty("crouchSpeed");
         walkSpeed = serializedObject.FindProperty("walkSpeed");
         sprintSpeed = serializedObject.FindProperty("sprintSpeed");
@@ -27,13 +30,15 @@ public class ThirdPersonPlayerEditor : Editor
         groundMask = serializedObject.FindProperty("groundMask");
         camera = serializedObject.FindProperty("cameraRig");
         cameraRot = serializedObject.FindProperty("camRotation");
-
     }
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
 
+        // references for player functionality
+        EditorGUILayout.PropertyField(controller);
+        EditorGUILayout.PropertyField(playerCam);
         // make editor gui for floats of the player character
         EditorGUILayout.FloatField("Crouch Speed", crouchSpeed.floatValue);
         EditorGUILayout.FloatField("Walk Speed", walkSpeed.floatValue);
@@ -62,6 +67,7 @@ public class ThirdPersonPlayerEditor : Editor
         CinemachineRotationComposer camView = cameraRot.objectReferenceValue as CinemachineRotationComposer;
         camView.Composition.ScreenPosition = EditorGUILayout.Vector2Field("Screen Position", camView.Composition.ScreenPosition);
         camera.objectReferenceValue = cam;
+
         serializedObject.ApplyModifiedProperties();
     }
 }
