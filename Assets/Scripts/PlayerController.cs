@@ -87,6 +87,8 @@ public class PlayerController : MonoBehaviour
         }
         // apply height changes
         controller.height = currentHeight;
+        // apply collision position changes
+        controller.center = new Vector3(0, currentHeight / 2, 0);
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
