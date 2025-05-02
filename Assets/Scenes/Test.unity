@@ -617,10 +617,6 @@ PrefabInstance:
       propertyPath: camRotation
       value: 
       objectReference: {fileID: 1551354214}
-    - target: {fileID: 1077399494226288923, guid: 6b531e16aeaf9d245816ffea2d93dd41, type: 3}
-      propertyPath: groundMask.m_Bits
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3316850800333663096, guid: 6b531e16aeaf9d245816ffea2d93dd41, type: 3}
       propertyPath: m_Name
       value: Player
@@ -724,7 +720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5941324452047163355, guid: 99df259a06a3aef4cb613343db36581b, type: 3}
       propertyPath: TransparentLayers.m_Bits
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9160922401770742984, guid: 99df259a06a3aef4cb613343db36581b, type: 3}
       propertyPath: Target.TrackingTarget
