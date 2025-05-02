@@ -49,7 +49,7 @@ public class ThirdPersonPlayerEditor : Editor
         EditorGUILayout.FloatField("Gravity", gravity.floatValue);
         EditorGUILayout.FloatField("Acceleration", acceleration.floatValue);
         // layer mask for jump
-        groundMask.intValue = EditorGUILayout.LayerField(groundMask.intValue);
+        groundMask.intValue = EditorGUILayout.LayerField("Ground Mask", groundMask.intValue);
         // make Editor GUI for Camera
         EditorGUILayout.PropertyField(camera);
         CinemachineOrbitalFollow cam = camera.objectReferenceValue as CinemachineOrbitalFollow;

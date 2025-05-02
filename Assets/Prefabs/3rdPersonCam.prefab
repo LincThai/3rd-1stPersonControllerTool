@@ -435,7 +435,7 @@ MonoBehaviour:
     Enabled: 1
     ObstacleLayers:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 8
     UseFollowTarget:
       Enabled: 1
       YOffset: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   IgnoreTag: 
   TransparentLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   MinimumDistanceFromTarget: 0.3
   AvoidObstacles:
     Enabled: 1

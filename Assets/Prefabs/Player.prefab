@@ -204,7 +204,7 @@ MonoBehaviour:
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 3
   crouchHeight: 1
   standHeight: 2
   cameraRig: {fileID: 0}
