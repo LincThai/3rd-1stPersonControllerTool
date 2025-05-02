@@ -1,7 +1,6 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.UIElements;
-using Unity.Cinemachine;
 
 [CustomEditor(typeof(PlayerController))]
 public class ThirdPersonPlayerEditor : Editor
