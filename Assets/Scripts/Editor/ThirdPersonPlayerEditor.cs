@@ -36,36 +36,52 @@ public class ThirdPersonPlayerEditor : Editor
         serializedObject.Update();
 
         // references for player functionality
-        EditorGUILayout.PropertyField(controller);
-        EditorGUILayout.PropertyField(playerCam);
-        // make editor gui for floats of the player character
-        EditorGUILayout.FloatField("Crouch Speed", crouchSpeed.floatValue);
-        EditorGUILayout.FloatField("Walk Speed", walkSpeed.floatValue);
-        EditorGUILayout.FloatField("Sprint Speed", sprintSpeed.floatValue);
-        EditorGUILayout.FloatField("Jump Height", jumpHeight.floatValue);
-        EditorGUILayout.FloatField("Crouch Height", crouchHeight.floatValue);
-        EditorGUILayout.FloatField("Stand Height", standHeight.floatValue);
-        EditorGUILayout.FloatField("Gravity", gravity.floatValue);
-        EditorGUILayout.FloatField("Acceleration", acceleration.floatValue);
+        EditorGUILayout.ObjectField(controller);
+        EditorGUILayout.ObjectField(playerCam);
+
+        // make editor gui for floats of the player character and ensure the values will change by applying
+        crouchSpeed.floatValue = EditorGUILayout.FloatField("Crouch Speed", crouchSpeed.floatValue);
+        walkSpeed.floatValue = EditorGUILayout.FloatField("Walk Speed", walkSpeed.floatValue);
+        sprintSpeed.floatValue = EditorGUILayout.FloatField("Sprint Speed", sprintSpeed.floatValue);
+        jumpHeight.floatValue = EditorGUILayout.FloatField("Jump Height", jumpHeight.floatValue);
+        crouchHeight.floatValue = EditorGUILayout.FloatField("Crouch Height", crouchHeight.floatValue);
+        standHeight.floatValue = EditorGUILayout.FloatField("Stand Height", standHeight.floatValue);
+        gravity.floatValue = EditorGUILayout.FloatField("Gravity", gravity.floatValue);
+        acceleration.floatValue = EditorGUILayout.FloatField("Acceleration", acceleration.floatValue);
+
         // layer mask for jump
         groundMask.intValue = EditorGUILayout.LayerField("Ground Mask", groundMask.intValue);
+
         // make Editor GUI for Camera
-        EditorGUILayout.PropertyField(camera);
+        EditorGUILayout.ObjectField(camera);
         CinemachineOrbitalFollow cam = camera.objectReferenceValue as CinemachineOrbitalFollow;
-        EditorGUILayout.LabelField("Top");
-        cam.Orbits.Top.Height = EditorGUILayout.FloatField("Height", cam.Orbits.Top.Height);
-        cam.Orbits.Top.Radius = EditorGUILayout.FloatField("Radius", cam.Orbits.Top.Radius);
-        EditorGUILayout.LabelField("Center");
-        cam.Orbits.Center.Height = EditorGUILayout.FloatField("Height", cam.Orbits.Center.Height);
-        cam.Orbits.Center.Radius = EditorGUILayout.FloatField("Radius", cam.Orbits.Center.Radius);
-        EditorGUILayout.LabelField("Bottom");
-        cam.Orbits.Bottom.Height = EditorGUILayout.FloatField("Height", cam.Orbits.Bottom.Height);
-        cam.Orbits.Bottom.Radius = EditorGUILayout.FloatField("Radius", cam.Orbits.Bottom.Radius);
-        cam.Orbits.SplineCurvature = EditorGUILayout.Slider(cam.Orbits.SplineCurvature, 0, 1);
-        EditorGUILayout.PropertyField(cameraRot);
+
+        // check if the cam does not equal null
+        if (cam != null)
+        {
+            // then display these fields
+            EditorGUILayout.LabelField("Top");
+            cam.Orbits.Top.Height = EditorGUILayout.FloatField("Height", cam.Orbits.Top.Height);
+            cam.Orbits.Top.Radius = EditorGUILayout.FloatField("Radius", cam.Orbits.Top.Radius);
+            EditorGUILayout.LabelField("Center");
+
+            cam.Orbits.Center.Height = EditorGUILayout.FloatField("Height", cam.Orbits.Center.Height);
+            cam.Orbits.Center.Radius = EditorGUILayout.FloatField("Radius", cam.Orbits.Center.Radius);
+            EditorGUILayout.LabelField("Bottom");
+            cam.Orbits.Bottom.Height = EditorGUILayout.FloatField("Height", cam.Orbits.Bottom.Height);
+            cam.Orbits.Bottom.Radius = EditorGUILayout.FloatField("Radius", cam.Orbits.Bottom.Radius);
+            cam.Orbits.SplineCurvature = EditorGUILayout.Slider("Spline Curvature", cam.Orbits.SplineCurvature, 0, 1);
+        }
+
+        EditorGUILayout.ObjectField(cameraRot);
         CinemachineRotationComposer camView = cameraRot.objectReferenceValue as CinemachineRotationComposer;
-        camView.Composition.ScreenPosition = EditorGUILayout.Vector2Field("Screen Position", camView.Composition.ScreenPosition);
-        camera.objectReferenceValue = cam;
+
+        // check if the camView does not equal null
+        if (camView != null)
+        {
+            // than display this field
+            camView.Composition.ScreenPosition = EditorGUILayout.Vector2Field("Screen Position", camView.Composition.ScreenPosition);
+        }
 
         serializedObject.ApplyModifiedProperties();
     }

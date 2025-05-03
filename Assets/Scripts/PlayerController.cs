@@ -1,7 +1,5 @@
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class PlayerController : MonoBehaviour
 {
@@ -132,11 +130,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            // calculates and adds force for jump
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
+        // applies gravity
         velocity.y += gravity * Time.deltaTime;
 
+        // applies to player movement the velocity
         controller.Move(velocity * Time.deltaTime);
     }
 }
