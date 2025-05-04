@@ -10,7 +10,7 @@ public class ThirdPersonPlayerEditor : Editor
     SerializedProperty crouchSpeed, walkSpeed, sprintSpeed;
     SerializedProperty jumpHeight, crouchHeight, standHeight;
     SerializedProperty acceleration, gravity;
-    SerializedProperty groundMask;
+    SerializedProperty groundMask, groundCheck;
     SerializedProperty camera, cameraRot;
 
     private void OnEnable()
@@ -27,6 +27,7 @@ public class ThirdPersonPlayerEditor : Editor
         gravity = serializedObject.FindProperty("gravity");
         acceleration = serializedObject.FindProperty("acceleration");
         groundMask = serializedObject.FindProperty("groundMask");
+        groundCheck = serializedObject.FindProperty("groundCheck");
         camera = serializedObject.FindProperty("cameraRig");
         cameraRot = serializedObject.FindProperty("camRotation");
     }
@@ -49,8 +50,9 @@ public class ThirdPersonPlayerEditor : Editor
         gravity.floatValue = EditorGUILayout.FloatField("Gravity", gravity.floatValue);
         acceleration.floatValue = EditorGUILayout.FloatField("Acceleration", acceleration.floatValue);
 
-        // layer mask for jump
+        // layer mask for jump and gravity Application
         groundMask.intValue = EditorGUILayout.LayerField("Ground Mask", groundMask.intValue);
+        EditorGUILayout.ObjectField(groundCheck);
 
         // make Editor GUI for Camera
         EditorGUILayout.ObjectField(camera);

@@ -56,6 +56,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // check if the players is grounded by forming a sphere at groundCheck with the radius of groundDistance
+        // then see if this sphere has collided with an object with a layer mask equal to groundMask
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        // ensures the player is firmly on the ground
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
         // walk, run and crouch
         if (isGrounded && Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -118,16 +128,6 @@ public class PlayerController : MonoBehaviour
         }
 
         // jump
-        // check if the players is grounded by forming a sphere at groundCheck with the radius of groundDistance
-        // then see if this sphere has collided with an object with a layer mask equal to groundMask
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        // ensures the player is firmly on the ground
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             // calculates and adds force for jump
@@ -139,5 +139,6 @@ public class PlayerController : MonoBehaviour
 
         // applies to player movement the velocity
         controller.Move(velocity * Time.deltaTime);
+        Debug.Log(isGrounded);
     }
 }
