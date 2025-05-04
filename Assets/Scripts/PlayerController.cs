@@ -139,6 +139,5 @@ public class PlayerController : MonoBehaviour
 
         // applies to player movement the velocity
         controller.Move(velocity * Time.deltaTime);
-        Debug.Log(isGrounded);
     }
 }

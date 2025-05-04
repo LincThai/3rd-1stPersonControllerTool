@@ -51,8 +51,8 @@ public class ThirdPersonPlayerEditor : Editor
         acceleration.floatValue = EditorGUILayout.FloatField("Acceleration", acceleration.floatValue);
 
         // layer mask for jump and gravity Application
-        groundMask.intValue = EditorGUILayout.LayerField("Ground Mask", groundMask.intValue);
         EditorGUILayout.ObjectField(groundCheck);
+        groundMask.intValue = EditorGUILayout.LayerField("Ground Mask", groundMask.intValue);
 
         // make Editor GUI for Camera
         EditorGUILayout.ObjectField(camera);

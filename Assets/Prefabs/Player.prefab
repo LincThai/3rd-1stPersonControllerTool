@@ -196,7 +196,7 @@ MonoBehaviour:
   crouchSpeed: 2.5
   walkSpeed: 5
   sprintSpeed: 10
-  jumpHeight: 2
+  jumpHeight: 2.5
   gravity: -9.8
   acceleration: 0.5
   turnSmoothTime: 0.1
@@ -204,7 +204,7 @@ MonoBehaviour:
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 3
+    m_Bits: 8
   crouchHeight: 1
   standHeight: 2
   cameraRig: {fileID: 0}
